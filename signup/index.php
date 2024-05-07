@@ -51,7 +51,8 @@
         </div>
       </div>
       
-      <button type="submit" class="btn btn-primary position-absolute bottom-0 start-50 translate-middle-x">Register</button>
+      <button type="submit" class="btn btn-primary position-absolute bottom-0 start-50 translate-middle-x"><a href="/Homepage/">Register</a></button>
+
     </form>
     <a href="/Homepage/">
   </div>
