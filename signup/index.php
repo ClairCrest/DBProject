@@ -22,7 +22,7 @@
       </div>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="citizenID" class="form-label">Password</label>
+          <label for="citizenID" class="form-label">CitizenID</label>
           <input type="text" class="form-control" id="citizenID" name="citizenID" placeholder="Enter Citizen ID">
         </div>
         <div class="col-md-6 mb-3">
