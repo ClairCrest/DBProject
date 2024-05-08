@@ -8,8 +8,27 @@
     <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Deposit</h1>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <div class="mt-5">
+            <h1>Deposit</h1>
 
+            <div class="form-group ">
+                <input type="text" class="form-control" name="amount" placeholder="Enter amount of your deposit">
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-5">
+                    <a class="btn btn-danger btn-primary w-100 mx-0" href="/Homepage/" role="button">Back</a>
+                </div>
+                <div class="col-md-5">
+                    <a class="btn btn-success btn-primary w-100 mx-5" href="#" role="button">Confirm</a>
+                </div>
+            </div>
+
+        </div>    
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
