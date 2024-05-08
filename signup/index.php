@@ -46,7 +46,7 @@
           <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password">
         </div>
         <div class="col-md-6 mb-3">
-          <label for="confirm_password" class="form-label">Last Name</label>
+          <label for="confirm_password" class="form-label">Confirm Password</label>
           <input type="text" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
         </div>
       </div>
