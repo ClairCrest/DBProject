@@ -44,7 +44,7 @@
         <h5 class="card-header">Pay Bill</h5>
           <div class="card-body">
             <p class="card-text">Pay your bills online.</p>
-            <a href="#" class="btn btn-primary">Pay Bill</a>
+            <a href="/paybill/" class="btn btn-primary">Pay Bill</a>
           </div>
         </div>
       </div>
