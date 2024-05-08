@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-6 mb-3">
           <label for="telephone" class="form-label">Telephone</label>
-          <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Telephone">
+          <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Enter Telephone">
         </div>
       </div>
       <div class="row">

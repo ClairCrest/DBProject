@@ -32,10 +32,10 @@
       </div>
       <div class="col-md-3 mx-5 my-2">
         <div class="card action-card larger-card w-100">
-        <h5 class="card-header">Top Up</h5>
+        <h5 class="card-header">Deposit</h5>
           <div class="card-body">
-            <p class="card-text">Top up your account balance.</p>
-            <a href="#" class="btn btn-primary">Top Up</a>
+            <p class="card-text">Deposit your account balance.</p>
+            <a href="/deposit/" class="btn btn-primary">Deposit</a>
           </div>
         </div>
       </div>
