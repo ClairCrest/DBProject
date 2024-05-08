@@ -26,7 +26,7 @@
         <h5 class="card-header">Transfer</h5>
           <div class="card-body">
             <p class="card-text">Transfer money to another account.</p>
-            <a href="#" class="btn btn-primary">Transfer</a>
+            <a href="/transfer/" class="btn btn-primary">Transfer</a>
           </div>
         </div>
       </div>
