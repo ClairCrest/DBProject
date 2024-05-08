@@ -22,36 +22,36 @@
     </div>
     <div class="row bottom-center">
       <div class="col-md-3 mx-5 my-2">
-        <div class="card action-card larger-card">
+        <div class="card action-card larger-card w-100">
+        <h5 class="card-header">Transfer</h5>
           <div class="card-body">
-            <h5 class="card-title">Transfer</h5>
             <p class="card-text">Transfer money to another account.</p>
             <a href="#" class="btn btn-primary">Transfer</a>
           </div>
         </div>
       </div>
       <div class="col-md-3 mx-5 my-2">
-        <div class="card action-card larger-card">
+        <div class="card action-card larger-card w-100">
+        <h5 class="card-header">Top Up</h5>
           <div class="card-body">
-            <h5 class="card-title">Top Up</h5>
             <p class="card-text">Top up your account balance.</p>
             <a href="#" class="btn btn-primary">Top Up</a>
           </div>
         </div>
       </div>
       <div class="col-md-3 mx-5 my-2">
-        <div class="card action-card larger-card">
+        <div class="card action-card larger-card w-100">
+        <h5 class="card-header">Pay Bill</h5>
           <div class="card-body">
-            <h5 class="card-title">Pay Bill</h5>
             <p class="card-text">Pay your bills online.</p>
             <a href="#" class="btn btn-primary">Pay Bill</a>
           </div>
         </div>
       </div>
       <div class="col-md-3 mx-5 my-2">
-        <div class="card action-card larger-card">
-          <div class="card-body">
-            <h5 class="card-title">Withdraw</h5>
+        <div class="card action-card larger-card w-100">
+        <h5 class="card-header">Withdraw</h5>
+          <div class="card-body">    
             <p class="card-text">Withdraw money from your account.</p>
             <a href="#" class="btn btn-primary">Withdraw</a>
           </div>
