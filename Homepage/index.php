@@ -22,7 +22,7 @@
     </div>
     <div class="container mt-5 row bottom-center">
       <div class="col-md-3 mx-5 my-2">
-        <div class="card center action-card larger-card">
+        <div class="card center action-card larger-card w-100">
         <h5 class="card-header">Transfer</h5>
           <div class="card-body">
             <p class="card-text">Transfer money to another account.</p>
