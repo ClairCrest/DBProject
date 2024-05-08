@@ -8,7 +8,6 @@
   <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-  <h1>GGWP</h1>
   <div class="position-absolute top-50 start-50 translate-middle text-center">
     <h1>KMUTT666 Bank</h1>
     <div class="my-5"><img src="/assets/img/logo1.png" alt="" class="logo"></div>
