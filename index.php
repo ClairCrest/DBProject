@@ -17,8 +17,7 @@
       <div class="mb-3">
         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary w-100"><a href="/Homepage/">Log in</a></button>
-
+      <a class="btn btn-primary w-100" href="/Homepage/" role="button">Log in</a>
 
 
     </form>
