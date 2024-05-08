@@ -20,10 +20,11 @@
         </div>
       </div>
     </div>
-    <div class="row bottom-center">
+    <div class="container mt-5 row bottom-center">
       <div class="col-md-3 mx-5 my-2">
-        <div class="card action-card larger-card w-100">
+        <div class="card center action-card larger-card">
         <h5 class="card-header">Transfer</h5>
+        <img src="/assets/img/Transfer1.png" class="Transfer" alt="">
           <div class="card-body">
             <p class="card-text">Transfer money to another account.</p>
             <a href="/transfer/" class="btn btn-primary">Transfer</a>
