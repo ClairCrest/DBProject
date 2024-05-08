@@ -5,3 +5,12 @@ body {
     background-color: #FFB8B8;
     border-radius: 50%;
 }
+.bottom-center {
+  position: fixed;
+  bottom: 10;
+  left: 35%;
+  
+}
+.larger-card {
+  width: 20rem;
+}
