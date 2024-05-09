@@ -18,7 +18,7 @@
     <h1>KMUTT666 Bank</h1>
     <div class="my-5"><img src="/assets/img/logo1.png" alt="" class="logo"></div>
 
-    <form action="signin/signin_db.php" method="post"> <div class="mb-3">
+    <form action="../signin/signin_db.php" method="post"> 
             <?php if (isset($_SESSION['error'])) { ?>
                 <div class="alert alert-danger" role="alert">
                     <?php
@@ -35,10 +35,11 @@
                     ?>
                 </div>
             <?php } ?>
-        <input type="email" class="form-control" id="username" name="username" placeholder="Email">
+      <div class="mb-3">
+        <input type="email" class="form-control" name="email" placeholder="Email">
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <input type="password" class="form-control"  name="password" placeholder="Password">
       </div>
       <button type="submit" class="btn btn-primary w-100" name="signin">Log in</button>
     </form>
