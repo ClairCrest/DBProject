@@ -1,5 +1,6 @@
 CREATE TABLE users (
     id int(11) NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+    balance int(11) NOT NULL,
     firstname varchar(255) NOT NULL,
     lastname varchar(255) NOT NULL,
     citizen_ID varchar(255) NOT NULL,
