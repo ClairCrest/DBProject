@@ -44,7 +44,7 @@
     </form>
 
     <div class="mt-5">
-      <h5 class="text-white">Click here to <a href="signup/index.php">Sign up</a></h5>
+      <h5 class="text-white">Click here to <a href="signup/index.php" class="text-warning">Sign up</a></h5>
     </div>
     
   </div>
