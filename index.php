@@ -23,11 +23,11 @@
       <div class="mb-3">
         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
       </div>
-      <a class="btn btn-primary w-100" href="/Homepage/" role="button">Log in</a>
+      <button type="submit" class="btn btn-primary w-100">Log in</button>
     </form>
 
     <div class="mt-5">
-      <h5>Click here to <a href="/signup/">Sign up</a></h5>
+      <h5>Click here to <a href="signup/index.php">Sign up</a></h5>
     </div>
     
   </div>
