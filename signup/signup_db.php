@@ -92,7 +92,7 @@
                     $stmt->bindParam(":password", $passwordHash);
                     $stmt->bindParam(":urole", $urole);
                     $stmt->execute();
-                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อย<a href='signin.php' class='alert-link'>คลิ๊กที่นี้</a>เพื่อเข้าสู่ระบบ";
+                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อย<a href='../index.php' class='alert-link'>คลิ๊กที่นี้</a>เพื่อเข้าสู่ระบบ";
                     header("location: index.php");
                 }
                 else
