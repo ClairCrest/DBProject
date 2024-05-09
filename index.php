@@ -14,8 +14,7 @@
 </head>
 <body>
   <div class="position-absolute top-50 start-50 translate-middle text-center">
-
-    <h1>KMUTT666 Bank</h1>
+    <h1 class="text-white">KMUTT666 Bank</h1>
     <div class="my-5"><img src="/assets/img/logo1.png" alt="" class="logo"></div>
 
     <form action="../signin/signin_db.php" method="post"> 
@@ -41,11 +40,11 @@
       <div class="mb-3">
         <input type="password" class="form-control"  name="password" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary w-100" name="signin">Log in</button>
+      <button type="submit" class="btn btn-warning w-100" name="signin">Log in</button>
     </form>
 
     <div class="mt-5">
-      <h5>Click here to <a href="signup/index.php">Sign up</a></h5>
+      <h5 class="text-white">Click here to <a href="signup/index.php">Sign up</a></h5>
     </div>
     
   </div>
