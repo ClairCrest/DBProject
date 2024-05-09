@@ -23,15 +23,15 @@
         </div>
     </div>
 
-        <div class="mt-5">
-            <h2 class="my-0 mx-5">Transfer To</h2>
+        <div class="my-5">
+            <h2 class="text-center">Transfer To</h2>
             <div class="row">
                 <div class="col-md-auto">
                     <input type="text" class="form-control mx-3" id="Account_No" name="Account_No" placeholder="Account No">
                 </div>
             </div>
 
-            <h2 class="my-3 mx-5">Amount</h2>
+            <h2 class="text-center mt-5">Amount</h2>
             <div class="row">
                 <div class="col-md-auto">
                     <input type="text" class="form-control mx-3" id="Amount" name="Amount" placeholder="Amount">
