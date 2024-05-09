@@ -36,7 +36,7 @@
                     <div class="row">
                     <div class="col-md-6">
                         <h5 class="card-title">Balance</h5>
-                        <p class="card-text fs-1">$<span id="balance">0<img src="../assets/img/JT.jpg" alt="" class="lol_pic"></span></p>
+                        <p class="card-text fs-1">฿<span id="balance"><?php echo number_format($row['balance'],2)?><img src="../assets/img/JT.jpg" alt="" class="lol_pic"></span></p>
                     </div>
                     </div>
                 </div>
