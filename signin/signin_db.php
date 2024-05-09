@@ -50,13 +50,13 @@
                         }
                         else
                         {
-                            $_SESSION['error'] = 'รหัสผ่านไม่ถูกต้อง';
+                            $_SESSION['error'] = 'อีเมลไม่ถูกต้องหรือรหัสผ่านไม่ถูกต้อง';
                             header("location: ../index.php");
                         }
                     }
                     else
                     {
-                        $_SESSION['error'] = 'อีเมลไม่ถูกต้อง';
+                        $_SESSION['error'] = 'อีเมลไม่ถูกต้องหรือรหัสผ่านไม่ถูกต้อง';
                         header("location: ../index.php");
                     }
                 }
