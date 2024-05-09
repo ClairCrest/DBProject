@@ -1,3 +1,6 @@
+<?php
+  require_once '../config/db.php';
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,7 +14,27 @@
   <div class="container mt-3">
     <h1>KMUTT666 Registration</h1>
     <hr>
-    <form> <div class="row">
+
+    <form action="signup_db.php" method="post"> <div class="row">
+      <?php if(isset($_SESSION['error'])) { ?>
+        <div class="alert alert-danger" role="alert">
+            echo $_SESSION['error'];
+            unset($_SESSION['error']);
+        </div>
+      <?php } ?>
+      <?php if(isset($_SESSION['success'])) { ?>
+        <div class="alert alert-success" role="alert">
+            echo $_SESSION['success'];
+            unset($_SESSION['success']);
+        </div>
+      <?php } ?>
+      <?php if(isset($_SESSION['warning'])) { ?>
+        <div class="alert alert-warning" role="alert">
+            echo $_SESSION['warning'];
+            unset($_SESSION['warning']);
+        </div>
+      <?php } ?>
+
         <div class="col-md-6 mt-3">
           <label for="firstname" class="form-label">Name</label>
           <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter Firstname">
@@ -51,7 +74,7 @@
           <input type="text" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
         </div>
       </div>
-      <a class="btn btn-primary w-100 mt-5" href="../index.php" role="button">Register</a>
+      <button type="submit" class="btn btn-primary mt-5 w-10" name="signup">Register</button>
 
     </form>
     <a href="/Homepage/">
