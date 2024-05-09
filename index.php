@@ -18,7 +18,7 @@
     <div class="my-5"><img src="/assets/img/logo1.png" alt="" class="logo"></div>
 
     <form> <div class="mb-3">
-        <input type="email" class="form-control" id="username" name="username" placeholder="Username">
+        <input type="email" class="form-control" id="username" name="username" placeholder="Email">
       </div>
       <div class="mb-3">
         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
