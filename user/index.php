@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -30,7 +30,7 @@
         ?>
         <!--<h1>Welcome <?php //echo $row['firstname']. ' ' .$row['lastname']?> User</h1>-->
         <div class="container mt-5">
-            <h1>My Account <?php echo $row['firstname']. ' ' .$row['lastname']?> </h1>
+            <h1 class="text-white">My Account <?php echo $row['firstname']. ' ' .$row['lastname']?> </h1>
             <div class="card mb-3 center">
                 <div class="card-body">
                     <div class="row">
