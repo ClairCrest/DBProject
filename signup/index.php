@@ -80,11 +80,11 @@
           <input type="password" class="form-control" name="c_password" placeholder="Confirm Password">
         </div>
       </div>
-      <button type="submit" class="btn btn-primary mt-3 w-10" name="signup">Register</button>
+      <button type="submit" class="btn btn-warning mt-3 w-10" name="signup">Register</button>
 
     </form>
     <hr>
-    <p>เป็นสมาชิกแล้วใช่ไหม คลิ๊กที่นี่เพื่อ<a href="../index.php">เข้าสู่ระบบ</a></p>
+    <p>เป็นสมาชิกแล้วใช่ไหม คลิ๊กที่นี่เพื่อ<a href="../index.php" class="text-warning">เข้าสู่ระบบ</a></p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
