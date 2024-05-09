@@ -7,9 +7,9 @@
         $lastname = $_POST['lastname'];
         $citizen_ID = $_POST['citizen_ID'];
         $telephone = $_POST['telephone'];
-        $email = $_POST['email'];
         $province = $_POST['province'];
-        $password = $_POST['pass$password'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
         $c_password = $_POST['c_password'];
         $urole = 'user';
 
@@ -29,16 +29,16 @@
             $_SESSION['error'] = 'กรุณากรอกเบอร์โทรศัพท์';
             header("location: ../signup/index.php");
         } 
+        else if(empty($province)) {
+            $_SESSION['error'] = 'กรุณากรอกที่อยู่';
+            header("location: ../signup/index.php");
+        }
         else if(empty($email)) {
             $_SESSION['error'] = 'กรุณากรอกอีเมล';
             header("location: ../signup/index.php");
         } 
         else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $_SESSION['error'] = 'รูปแบบอีเมลไม่ถูกต้อง';
-            header("location: ../signup/index.php");
-        }
-        else if(empty($province)) {
-            $_SESSION['error'] = 'กรุณากรอกที่อยู่';
             header("location: ../signup/index.php");
         }
         else if(empty($password)) {
@@ -56,39 +56,47 @@
         else if($password != $c_password) {
             $_SESSION['error'] = 'รหัสผ่านไม่ตรงกัน';
             header("location: ../signup/index.php");
-        } else{
-            try {
-                $check_email = $conn->prepare("SELECT email FROM user WHERE email = :email");
+        } 
+        else
+        {
+            try
+            {
+                $check_email = $conn->prepare("SELECT email FROM users WHERE email = :email");
                 $check_email->bindParam(":email", $email);
                 $check_email->execute();
                 $row = $check_email->fetch(PDO::FETCH_ASSOC);
 
-                if($row['email'] == $email) {
-                    $_SESSION['warning'] = "มีอีเมลนี้อยู่ในระบบแล้ว <a href='../index.php'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
-                    header("location: ../signup/index.php");
-                } else if(!isset($_SESSION['error'])) {
+                if($row['email'] == $email)
+                {
+                    $_SESSION['warning'] = "มีอีเมลนี้อยู่ในระบบแล้ว <a href='signin.php'>คลิ๊กที่นี้</a>เพื่อเข้าสู่ระบบ";
+                    header("location: index.php");
+                }
+                else if(!isset($_SESSION['error']))
+                {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = $conn->prepare("INSERT INTO user(firstname, lastname, citizen_ID, telephone, email, province, password, urole) 
-                                            VALUE():firstname, :lastname, :citizen_ID :telephone, :email, :province, :password, :urole");
+                    $stmt = $conn->prepare("INSERT INTO users(firstname, lastname, citizen_ID, province, email, password, urole) VALUES(:firstname, :lastname, :citizen_ID, :province, :email, :password, :urole)");
+
                     $stmt->bindParam(":firstname", $firstname);
                     $stmt->bindParam(":lastname", $lastname);
                     $stmt->bindParam(":citizen_ID", $citizen_ID);
-                    $stmt->bindParam(":telephone", $telephone);
                     $stmt->bindParam(":email", $email);
                     $stmt->bindParam(":province", $province);
                     $stmt->bindParam(":password", $passwordHash);
                     $stmt->bindParam(":urole", $urole);
                     $stmt->execute();
-                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว <a href='../index.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
-                    header("location: ../signup/index.php");
-                } else {
-                    $_SESSION['error'] = "มีบางอย่างผิดพลาด";
-                    header("location: ../signup/index.php");
+                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อย<a href='signin.php' class='alert-link'>คลิ๊กที่นี้</a>เพื่อเข้าสู่ระบบ";
+                    header("location: index.php");
                 }
-            } catch(PDOException $e) {
+                else
+                {
+                    $_SESSION['error'] = "มีบางอย่างผิดพลาด";
+                    header("location: index.php");
+                }
+
+            }catch(PDOException $e) 
+            {
                 echo $e->getMessage();
             }
         }
-
     }
 ?>
