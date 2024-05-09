@@ -17,7 +17,7 @@
     <h1>KMUTT666 Bank</h1>
     <div class="my-5"><img src="/assets/img/logo1.png" alt="" class="logo"></div>
 
-    <form> <div class="mb-3">
+    <form action="/Homepage/"> <div class="mb-3">
         <input type="email" class="form-control" id="username" name="username" placeholder="Email">
       </div>
       <div class="mb-3">
