@@ -1,33 +1,15 @@
 body {
-    background-color: rgb(255, 255, 255);
-  }
+    background-color: #31363F !important;
+}
 .logo {
-    background-color: #FFB8B8;
+    background-color:#FFB8B8;
     border-radius: 50%;
 }
 .bottom-center {
   position: fixed;
   bottom: 10;
   left: 35%;
-  
 }
 .larger-card {
   width: 20rem;
-}
-.Transfer {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-.Topup {
-  margin-left: auto;
-  margin-right: auto;
-  width: 52%;
-}
-
-.card-img-top {
-  height: 10px; /* Set a fixed height for the card image */
-  max-height: 200px;
-  object-fit: cover; /* Ensure the image covers the entire space */
 }
