@@ -25,10 +25,18 @@
             $_SESSION['error'] = 'กรุณากรอกเลขบัตรประชาชน';
             header("location: ../signup/index.php");
         } 
+        else if(strlen($_POST['citizen_ID']) > 13 || strlen($_POST['citizen_ID']) < 13) {
+            $_SESSION['error'] = 'เลขประจำตัวไม่ถูกต้อง';
+            header("location: ../signup/index.php");
+        }
         else if(empty($telephone)) {
             $_SESSION['error'] = 'กรุณากรอกเบอร์โทรศัพท์';
             header("location: ../signup/index.php");
         } 
+        else if(strlen($_POST['telephone']) > 10 || strlen($_POST['telephone']) < 10) {
+            $_SESSION['error'] = 'เบอร์โทรไม่ถูกต้อง';
+            header("location: ../signup/index.php");
+        }
         else if(empty($province)) {
             $_SESSION['error'] = 'กรุณากรอกที่อยู่';
             header("location: ../signup/index.php");
@@ -74,11 +82,11 @@
                 else if(!isset($_SESSION['error']))
                 {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = $conn->prepare("INSERT INTO users(firstname, lastname, citizen_ID, province, email, password, urole) VALUES(:firstname, :lastname, :citizen_ID, :province, :email, :password, :urole)");
-
+                    $stmt = $conn->prepare("INSERT INTO users(firstname, lastname, citizen_ID, telephone, province, email, password, urole) VALUES(:firstname, :lastname, :citizen_ID, :telephone,:province, :email, :password, :urole)");
                     $stmt->bindParam(":firstname", $firstname);
                     $stmt->bindParam(":lastname", $lastname);
                     $stmt->bindParam(":citizen_ID", $citizen_ID);
+                    $stmt->bindParam(":telephone", $telephone);
                     $stmt->bindParam(":email", $email);
                     $stmt->bindParam(":province", $province);
                     $stmt->bindParam(":password", $passwordHash);
