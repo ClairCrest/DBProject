@@ -18,7 +18,7 @@
             $_SESSION['error'] = 'กรุณากรอกรหัสผ่าน';
             header("location: ../index.php");
         }
-        else if(strlen($_POST['password']) > 20 || strlen($_POST['password'] < 5)) {
+        else if(strlen($_POST['password']) > 20 && strlen($_POST['password'] < 5)) {
             $_SESSION['error'] = 'รหัสผ่านต้องมีความยาวระหว่าง 5-20 ตัวอักษร';
             header("location: ../index.php");
         }
