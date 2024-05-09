@@ -3,6 +3,7 @@
     require_once '../config/db.php';
 
     if(isset($_POST['signup'])) {
+        $balance = 0;
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $citizen_ID = $_POST['citizen_ID'];
@@ -82,7 +83,8 @@
                 else if(!isset($_SESSION['error']))
                 {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = $conn->prepare("INSERT INTO users(firstname, lastname, citizen_ID, telephone, province, email, password, urole) VALUES(:firstname, :lastname, :citizen_ID, :telephone,:province, :email, :password, :urole)");
+                    $stmt = $conn->prepare("INSERT INTO users(balance, firstname, lastname, citizen_ID, telephone, province, email, password, urole) VALUES(:balance, :firstname, :lastname, :citizen_ID, :telephone,:province, :email, :password, :urole)");
+                    $stmt->bindParam(":balance", $balance);
                     $stmt->bindParam(":firstname", $firstname);
                     $stmt->bindParam(":lastname", $lastname);
                     $stmt->bindParam(":citizen_ID", $citizen_ID);
