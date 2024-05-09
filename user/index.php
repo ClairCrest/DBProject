@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -32,16 +32,57 @@
         <div class="container mt-5">
             <h1>My Account <?php echo $row['firstname']. ' ' .$row['lastname']?> </h1>
             <div class="card mb-3 center">
-            <div class="card-body">
-                <div class="row">
-                <div class="col-md-6">
-                    <h5 class="card-title">Balance</h5>
-                    <p class="card-text fs-1">$<span id="balance">0</span></p>
-                </div>
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Balance</h5>
+                        <p class="card-text fs-1">$<span id="balance">0</span></p>
+                    </div>
+                    </div>
                 </div>
             </div>
-            <a href="../logout/" class="btn btn-danger">Log out</a>
+            <div class="row mt-3">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                        <h5 class="card-header">Transfer</h5>
+                        <div class="card-body">
+                            <p class="card-text">Transfer money to another Account.</p>
+                            <a href="/transfer/" class="btn btn-warning">Transfer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <h5 class="card-header">Pay bill</h5>
+                        <div class="card-body">
+                            <p class="card-text">Pay your bills online.</p>
+                            <a href="/paybill/" class="btn btn-warning">Pay bill</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                        <h5 class="card-header">Deposit</h5>
+                        <div class="card-body">
+                            <p class="card-text">Deposit your accout balance.</p>
+                            <a href="/deposit/" class="btn btn-warning">Deposit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <h5 class="card-header">Withdraw</h5>
+                        <div class="card-body">
+                            <!--<h5 class="card-title">Withdraw</h5>-->
+                            <p class="card-text">Withdraw money from your accout.</p>
+                            <a href="/withdraw/" class="btn btn-warning">Withdraw</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-10 mt-5"><a href="../logout/" class="btn btn-danger">Log out</a></div>
         </div>
     </div>
 
