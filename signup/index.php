@@ -15,26 +15,32 @@
     <h1>KMUTT666 Registration</h1>
     <hr>
 
-    <form action="signup_db.php" method="post"> <div class="row">
-      <?php if(isset($_SESSION['error'])) { ?>
-        <div class="alert alert-danger" role="alert">
-            echo $_SESSION['error'];
-            unset($_SESSION['error']);
-        </div>
-      <?php } ?>
-      <?php if(isset($_SESSION['success'])) { ?>
-        <div class="alert alert-success" role="alert">
-            echo $_SESSION['success'];
-            unset($_SESSION['success']);
-        </div>
-      <?php } ?>
-      <?php if(isset($_SESSION['warning'])) { ?>
-        <div class="alert alert-warning" role="alert">
-            echo $_SESSION['warning'];
-            unset($_SESSION['warning']);
-        </div>
-      <?php } ?>
-
+    <form action="../signup/signup_db.php" method="post"> 
+            <?php if (isset($_SESSION['error'])) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php
+                        echo$_SESSION['error'];
+                        unset($_SESSION['error']);
+                    ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_SESSION['success'])) { ?>
+                <div class="alert alert-success" role="alert">
+                    <?php
+                        echo$_SESSION['success'];
+                        unset($_SESSION['success']);
+                    ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_SESSION['warning'])) { ?>
+                <div class="alert alert-warning" role="alert">
+                    <?php
+                        echo$_SESSION['warning'];
+                        unset($_SESSION['warning']);
+                    ?>
+                </div>
+            <?php } ?>
+      <div class="row">
         <div class="col-md-6 mt-3">
           <label for="firstname" class="form-label">Name</label>
           <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter Firstname">
@@ -74,10 +80,11 @@
           <input type="text" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
         </div>
       </div>
-      <button type="submit" class="btn btn-primary mt-5 w-10" name="signup">Register</button>
+      <button type="submit" class="btn btn-primary mt-3 w-10" name="signup">Register</button>
 
     </form>
-    <a href="/Homepage/">
+    <hr>
+    <p>เป็นสมาชิกแล้วใช่ไหม คลิ๊กที่นี่เพื่อ<a href="../index.php">เข้าสู่ระบบ</a></p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
