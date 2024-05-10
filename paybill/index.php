@@ -20,22 +20,22 @@
 <body>
   <div class="position-absolute top-0 start-50 translate-middle-x mt-3 text-white w-25">
     <form action="../paybill/payment.php" method="post">
-            <?php if (isset($_SESSION['error'])) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php
-                            echo$_SESSION['error'];
-                            unset($_SESSION['error']);
-                        ?>
-                    </div>
-                <?php } ?>
-                <?php if (isset($_SESSION['success'])) { ?>
-                    <div class="alert alert-success" role="alert">
-                        <?php
-                            echo$_SESSION['success'];
-                            unset($_SESSION['success']);
-                        ?>
-                    </div>
-            <?php } ?>
+    <?php if (isset($_SESSION['error'])) { ?>
+      <div class="alert alert-danger" role="alert">
+          <?php
+            echo$_SESSION['error'];
+            unset($_SESSION['error']);
+          ?>
+          </div>
+        <?php } ?>
+        <?php if (isset($_SESSION['success'])) { ?>
+      <div class="alert alert-success" role="alert">
+          <?php
+            echo$_SESSION['success'];
+            unset($_SESSION['success']);
+          ?>
+      </div>
+    <?php } ?>
     <fieldset usabled>
       <legend>Pay bill</legend>
       <div class="mb-3">
