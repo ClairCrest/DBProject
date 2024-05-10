@@ -36,7 +36,7 @@
                     </div>
             <?php } ?>
             <fieldset usabled class="text-white">
-                <legend>Deposit</legend>
+                <legend><h1>Deposit</h1></legend>
                 <img width='300' height='300' src='../assets/img/deposit1.jpg' alt='' class="rounded" class='deposit1'>
                 <div class="mt-3 mb-3">
                     <input type="text" class="form-control text-center" name="money" placeholder="Add Money">
