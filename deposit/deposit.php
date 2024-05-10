@@ -23,13 +23,31 @@ if(isset($_POST['deposit']))
     else
     {
         try
-            {
+        {
+            // Retrieve current balance from the database
+            $getBalanceStmt = $conn->prepare("SELECT balance FROM users WHERE id = :user_id");
+            $getBalanceStmt->bindParam(":user_id", $_SESSION['user_login']);
+            $getBalanceStmt->execute();
+            $row = $getBalanceStmt->fetch(PDO::FETCH_ASSOC);
+            $currentBalance = $row['balance'];
 
+            // Calculate new balance after deposit
+            $newBalance = $currentBalance + $money;
 
-            }catch(PDOException $e) 
-            {
-                echo $e->getMessage();
-            }
+            // Update balance in the database
+            $updateBalanceStmt = $conn->prepare("UPDATE users SET balance = :new_balance WHERE id = :user_id");
+            $updateBalanceStmt->bindParam(":new_balance", $newBalance);
+            $updateBalanceStmt->bindParam(":user_id", $_SESSION['user_login']);
+            $updateBalanceStmt->execute();
+
+            // Redirect to success page
+            $_SESSION['success'] = "เพิ่มเงินสำเร็จ";
+            header("location: ../deposit/index.php");
         }
-    } 
+        catch(PDOException $e) 
+        {
+            echo $e->getMessage();
+        }
+    }
+} 
 ?>
