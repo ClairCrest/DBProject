@@ -10,7 +10,12 @@ if(isset($_POST['deposit']))
         $_SESSION['error'] = "กรุณากรอกจำนวนเงิน";
         header("location: ../deposit/index.php");
     }
-    else if (!filter_var($money, FILTER_VALIDATE_FLOAT)) 
+    else if(!filter_var($money, FILTER_VALIDATE_FLOAT)) 
+    {
+        $_SESSION['error'] = 'กรุณากรอกใหม่';
+        header("location: ../deposit/index.php");
+    }
+    else if($money < 0)
     {
         $_SESSION['error'] = 'กรุณากรอกใหม่';
         header("location: ../deposit/index.php");
