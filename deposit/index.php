@@ -36,7 +36,7 @@
                     <input type="text" class="form-control text-center" name="money" placeholder="Add Money">
                 </div>
                 <a href="../user/" class="btn btn-danger">Back</a>
-                <button type="submit" class="btn btn-primary" name="deposit">Deposit</button>
+                <button type="submit" class="btn btn-primary" name="deposits">Deposit</button>
             </fieldset>
         </form>
     </div>
