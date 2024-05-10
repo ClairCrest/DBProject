@@ -31,26 +31,33 @@ if(isset($_POST['withdraw']))
             $row = $getBalanceStmt->fetch(PDO::FETCH_ASSOC);
             $currentBalance = $row['balance'];
 
-            // Calculate new balance after deposit
-            $newBalance = $currentBalance - $money;
+            if($currentBalance < $money)
+            {
+                $_SESSION['error'] = 'กรุณาลองใหม่อีกครั้ง';
+                header("location: ../withdraw/index.php");
+            }
+            else
+            {
+                $newBalance = $currentBalance - $money;
 
-            // Update balance in the database
-            $updateBalanceStmt = $conn->prepare("UPDATE users SET balance = :new_balance WHERE id = :user_id");
-            $updateBalanceStmt->bindParam(":new_balance", $newBalance);
-            $updateBalanceStmt->bindParam(":user_id", $_SESSION['user_login']);
-            $updateBalanceStmt->execute();
+                // Update balance in the database
+                $updateBalanceStmt = $conn->prepare("UPDATE users SET balance = :new_balance WHERE id = :user_id");
+                $updateBalanceStmt->bindParam(":new_balance", $newBalance);
+                $updateBalanceStmt->bindParam(":user_id", $_SESSION['user_login']);
+                $updateBalanceStmt->execute();
 
-            // Store transaction history
-            $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, old_balance, new_balance, difference) VALUES (:user_id, :current_balance, :new_balance, :money)");
-            $insertHistoryStmt->bindParam(":user_id", $_SESSION['user_login']);
-            $insertHistoryStmt->bindParam(":current_balance", $currentBalance);
-            $insertHistoryStmt->bindParam(":new_balance", $newBalance);
-            $insertHistoryStmt->bindParam(":money", $money);
-            $insertHistoryStmt->execute();
+                // Store transaction history
+                $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, old_balance, new_balance, difference) VALUES (:user_id, :current_balance, :new_balance, :money)");
+                $insertHistoryStmt->bindParam(":user_id", $_SESSION['user_login']);
+                $insertHistoryStmt->bindParam(":current_balance", $currentBalance);
+                $insertHistoryStmt->bindParam(":new_balance", $newBalance);
+                $insertHistoryStmt->bindParam(":money", $money);
+                $insertHistoryStmt->execute();
 
-            // Redirect to success page
-            $_SESSION['success'] = "ถอนเงินสำเร็จ";
-            header("location: ../deposit/index.php");
+                // Redirect to success page
+                $_SESSION['success'] = "ถอนเงินสำเร็จ";
+                header("location: ../withdraw/index.php");
+            }
         }
         catch(PDOException $e) 
         {
