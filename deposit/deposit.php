@@ -31,6 +31,7 @@ if(isset($_POST['deposit']))
             $row = $getBalanceStmt->fetch(PDO::FETCH_ASSOC);
             $currentBalance = $row['balance'];
 
+            $money = (float)$money;
             // Calculate new balance after deposit
             $newBalance = $currentBalance + $money;
 
