@@ -37,11 +37,12 @@
             <?php } ?>
             <fieldset usabled class="text-white">
                 <legend>Deposit</legend>
-                <div class="mb-3">
+                <img width='300' height='300' src='../assets/img/deposit1.jpg' alt='' class="rounded" class='deposit1'>
+                <div class="mt-3 mb-3">
                     <input type="text" class="form-control text-center" name="money" placeholder="Add Money">
                 </div>
-                <a href="../user/" class="btn btn-danger">Back</a>
-                <button type="submit" class="btn btn-primary" name="deposit">Deposit</button>
+                <a href="../user/" class="me-5 btn btn-danger">Back</a>
+                <button type="submit" class="ms-5 btn btn-primary" name="deposit">Deposit</button>
             </fieldset>
         </form>
     </div>
