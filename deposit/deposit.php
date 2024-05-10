@@ -31,7 +31,6 @@ if(isset($_POST['deposit']))
             $row = $getBalanceStmt->fetch(PDO::FETCH_ASSOC);
             $currentBalance = $row['balance'];
 
-            $money = (float)$money;
             // Calculate new balance after deposit
             $newBalance = $currentBalance + $money;
 
@@ -40,6 +39,14 @@ if(isset($_POST['deposit']))
             $updateBalanceStmt->bindParam(":new_balance", $newBalance);
             $updateBalanceStmt->bindParam(":user_id", $_SESSION['user_login']);
             $updateBalanceStmt->execute();
+
+            // Store transaction history
+            $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, old_balance, new_balance, difference) VALUES (:user_id, :current_balance, :new_balance, :money)");
+            $insertHistoryStmt->bindParam(":user_id", $_SESSION['user_login']);
+            $insertHistoryStmt->bindParam(":current_balance", $currentBalance);
+            $insertHistoryStmt->bindParam(":new_balance", $newBalance);
+            $insertHistoryStmt->bindParam(":money", $money);
+            $insertHistoryStmt->execute();
 
             // Redirect to success page
             $_SESSION['success'] = "เพิ่มเงินสำเร็จ";
