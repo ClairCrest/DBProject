@@ -15,5 +15,16 @@ if(isset($_POST['deposit']))
         $_SESSION['error'] = 'กรุณากรอกใหม่';
         header("location: ../deposit/index.php");
     }
-} 
+    else
+    {
+        try
+            {
+
+
+            }catch(PDOException $e) 
+            {
+                echo $e->getMessage();
+            }
+        }
+    } 
 ?>
