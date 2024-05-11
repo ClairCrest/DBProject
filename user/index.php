@@ -30,7 +30,8 @@
         ?>
         <!--<h1>Welcome <?php //echo $row['firstname']. ' ' .$row['lastname']?> User</h1>-->
         <div class="container mt-5">
-            <h1 class="text-white">My Account <?php echo $row['firstname']. ' ' .$row['lastname']?> </h1>
+            <h1 class="text-white">Welcome User: <?php echo $row['firstname'].' '.$row['lastname']?></h1>
+            <h4 class="text-white">Account Num: <?php echo $row['id']?> </h4>
             <div class="card mb-3 center">
                 <div class="card-body">
                     <div class="row">
