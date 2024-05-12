@@ -42,6 +42,11 @@
                                 $_SESSION['admin_login'] = $row['id'];
                                 header("location: ../admin/index.php");
                             }
+                            else if($row['urole'] == 'moderator')
+                            {
+                                $_SESSION['moderator_login'] = $row['id'];
+                                header("location: ../moderator/index.php");
+                            }
                             else
                             {
                                 $_SESSION['user_login'] = $row['id'];
