@@ -31,5 +31,17 @@
         <h1>Welcome Admin <?php echo $row['firstname']. ' ' .$row['lastname']?></h1>
         <a href="../logout/" class="btn btn-danger">Log out</a>
     </div>
+
+    <div class="container">
+        <h2>Search Form</h2>
+        <form name="searchForm" method="post" action="admin.php">
+            <div class="mb-3">
+                <label for="id" class="form-label">ID:</label>
+                <input type="text" class="form-control" id="id" name="id">
+            </div>
+            <button type="submit" class="btn btn-primary" name="Search">Search</button>
+        </form>
+    </div>
+    
 </body>
 </html>
