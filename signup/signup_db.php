@@ -12,101 +12,94 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         $c_password = $_POST['c_password'];
+        $zip_code = $_POST['zip_code'];
+        $country = $_POST['country'];
         $urole = 'user';
 
-        if(empty($firstname)) {
-            $_SESSION['error'] = 'กรุณากรอกชื่อ';
+        if(empty($firstname) || empty($lastname) || empty($citizen_ID) || empty($telephone) || empty($province) || empty($email) || empty($password) || empty($c_password) || empty($country) || empty($zip_code)) {
+            $_SESSION['error'] = 'Please fill in all fields';
             header("location: ../signup/index.php");
-        } 
-        else if(empty($lastname)) {
-            $_SESSION['error'] = 'กรุณากรอกนามสกุล';
-            header("location: ../signup/index.php");
-        } 
-        else if(empty($citizen_ID)) {
-            $_SESSION['error'] = 'กรุณากรอกเลขบัตรประชาชน';
-            header("location: ../signup/index.php");
-        } 
-        else if(strlen($_POST['citizen_ID']) > 13 || strlen($_POST['citizen_ID']) < 13) {
-            $_SESSION['error'] = 'เลขประจำตัวไม่ถูกต้อง';
-            header("location: ../signup/index.php");
+            exit();
         }
-        else if(empty($telephone)) {
-            $_SESSION['error'] = 'กรุณากรอกเบอร์โทรศัพท์';
-            header("location: ../signup/index.php");
-        } 
-        else if(strlen($_POST['telephone']) > 10 || strlen($_POST['telephone']) < 10) {
-            $_SESSION['error'] = 'เบอร์โทรไม่ถูกต้อง';
-            header("location: ../signup/index.php");
-        }
-        else if(empty($province)) {
-            $_SESSION['error'] = 'กรุณากรอกที่อยู่';
-            header("location: ../signup/index.php");
-        }
-        else if(empty($email)) {
-            $_SESSION['error'] = 'กรุณากรอกอีเมล';
-            header("location: ../signup/index.php");
-        } 
-        else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['error'] = 'รูปแบบอีเมลไม่ถูกต้อง';
-            header("location: ../signup/index.php");
-        }
-        else if(empty($password)) {
-            $_SESSION['error'] = 'กรุณากรอกรหัสผ่าน';
-            header("location: ../signup/index.php");
-        }
-        else if(strlen($_POST['password']) > 20 || strlen($_POST['password'] < 5)) {
-            $_SESSION['error'] = 'รหัสผ่านต้องมีความยาวระหว่าง 5-20 ตัวอักษร';
-            header("location: ../signup/index.php");
-        }
-        else if(empty($c_password)) {
-            $_SESSION['error'] = 'กรุณายืนยันรหัสผ่าน';
-            header("location: ../signup/index.php");
-        }
-        else if($password != $c_password) {
-            $_SESSION['error'] = 'รหัสผ่านไม่ตรงกัน';
-            header("location: ../signup/index.php");
-        } 
-        else
-        {
-            try
-            {
-                $check_email = $conn->prepare("SELECT email FROM users WHERE email = :email");
-                $check_email->bindParam(":email", $email);
-                $check_email->execute();
-                $row = $check_email->fetch(PDO::FETCH_ASSOC);
 
-                if($row['email'] == $email)
-                {
-                    $_SESSION['warning'] = "มีอีเมลนี้อยู่ในระบบแล้ว <a href='signin.php'>คลิ๊กที่นี้</a>เพื่อเข้าสู่ระบบ";
-                    header("location: index.php");
-                }
-                else if(!isset($_SESSION['error']))
-                {
-                    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = $conn->prepare("INSERT INTO users(balance, firstname, lastname, citizen_ID, telephone, province, email, password, urole) VALUES(:balance, :firstname, :lastname, :citizen_ID, :telephone,:province, :email, :password, :urole)");
-                    $stmt->bindParam(":balance", $balance);
-                    $stmt->bindParam(":firstname", $firstname);
-                    $stmt->bindParam(":lastname", $lastname);
-                    $stmt->bindParam(":citizen_ID", $citizen_ID);
-                    $stmt->bindParam(":telephone", $telephone);
-                    $stmt->bindParam(":email", $email);
-                    $stmt->bindParam(":province", $province);
-                    $stmt->bindParam(":password", $passwordHash);
-                    $stmt->bindParam(":urole", $urole);
-                    $stmt->execute();
-                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อย<a href='../index.php' class='alert-link'>คลิ๊กที่นี้</a>เพื่อเข้าสู่ระบบ";
-                    header("location: index.php");
-                }
-                else
-                {
-                    $_SESSION['error'] = "มีบางอย่างผิดพลาด";
-                    header("location: index.php");
-                }
+        if(strlen($_POST['citizen_ID']) !== 13) {
+            $_SESSION['error'] = 'Invalid Citizen ID length';
+            header("location: ../signup/index.php");
+            exit();
+        }
 
-            }catch(PDOException $e) 
-            {
-                echo $e->getMessage();
+        if(strlen($_POST['telephone']) !== 10) {
+            $_SESSION['error'] = 'Invalid Telephone number length';
+            header("location: ../signup/index.php");
+            exit();
+        }
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['error'] = 'Invalid email format';
+            header("location: ../signup/index.php");
+            exit();
+        }
+
+        if(strlen($_POST['password']) < 5 || strlen($_POST['password']) > 20) {
+            $_SESSION['error'] = 'Password length must be between 5 and 20 characters';
+            header("location: ../signup/index.php");
+            exit();
+        }
+
+        if($password !== $c_password) {
+            $_SESSION['error'] = 'Passwords do not match';
+            header("location: ../signup/index.php");
+            exit();
+        }
+
+        try {
+            // Check if email already exists
+            $check_email = $conn->prepare("SELECT email FROM users WHERE email = :email");
+            $check_email->bindParam(":email", $email);
+            $check_email->execute();
+            $row_email = $check_email->fetch(PDO::FETCH_ASSOC);
+
+            if($row_email['email'] == $email) {
+                $_SESSION['error'] = "Email already exists";
+                header("location: ../signup/index.php");
+                exit();
             }
+
+            // Insert data into acc_detail table
+            $stmt_detail = $conn->prepare("INSERT INTO address1(country, province, zip_code) VALUES (:country, :province, :zip_code)");
+            $stmt_detail->bindParam(":country", $country);
+            $stmt_detail->bindParam(":province", $province);
+            $stmt_detail->bindParam(":zip_code", $zip_code);
+            $stmt_detail->execute();
+            $address_id = $conn->lastInsertId(); // Get the last inserted ID
+
+            // Insert data into acc_detail table
+            $stmt_detail = $conn->prepare("INSERT INTO acc_detail (firstname, lastname, citizen_ID, telephone, address_id) VALUES (:firstname, :lastname, :citizen_ID, :telephone, :address_id)");
+            $stmt_detail->bindParam(":firstname", $firstname);
+            $stmt_detail->bindParam(":lastname", $lastname);
+            $stmt_detail->bindParam(":citizen_ID", $citizen_ID);
+            $stmt_detail->bindParam(":telephone", $telephone);
+            $stmt_detail->bindParam(":address_id", $address_id);
+            $stmt_detail->execute();
+            $detail_id = $conn->lastInsertId(); // Get the last inserted ID
+
+            // Insert data into users table
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $stmt_users = $conn->prepare("INSERT INTO users (balance, email, password, urole, detail_id) VALUES (:balance, :email, :password, :urole, :detail_id)");
+            $stmt_users->bindParam(":balance", $balance);
+            $stmt_users->bindParam(":email", $email);
+            $stmt_users->bindParam(":password", $passwordHash);
+            $stmt_users->bindParam(":urole", $urole);
+            $stmt_users->bindParam(":detail_id", $detail_id);
+            $stmt_users->execute();
+
+            $_SESSION['success'] = "Registration successful. <a href='../index.php' class='alert-link'>Click here</a> to login.";
+            header("location: ../signup/index.php");
+            exit();
+
+        } catch(PDOException $e) {
+            $_SESSION['error'] = "An error occurred: " . $e->getMessage();
+            header("location: ../signup/index.php");
+            exit();
         }
     }
 ?>

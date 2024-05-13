@@ -66,6 +66,16 @@
           <input type="text" class="form-control" name="province" placeholder="Enter Province">
         </div>
         <div class="col-md-6 mt-3">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" class="form-control"name="country" placeholder="Ente Country">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mt-3">
+          <label for="zip_code" class="form-label">Zip-code</label>
+          <input type="text" class="form-control" name="zip_code" placeholder="Enter Zip">
+        </div>
+        <div class="col-md-6 mt-3">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control"name="email" placeholder="Enter Email">
         </div>
