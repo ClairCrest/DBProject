@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moderator Homepage</title>
+    <title>Admin Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="/assets/css/style.css" rel="stylesheet">
 </head>
@@ -23,27 +23,35 @@
             {
                 //เอาไว้ query data หาข้อมูล
                 $moderator_id = $_SESSION['moderator_login'];
-                $stmt = $conn->query("SELECT * FROM users WHERE id = $moderator_id");
+                $stmt = $conn->query("SELECT * FROM acc_detail WHERE detail_id = $moderator_id");
                 $stmt-> execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                $moderator_id = $_SESSION['moderator_login'];
+                $stmt = $conn->query("SELECT * FROM users WHERE id = $moderator_id");
+                $stmt-> execute();
+                $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
             }
         ?>
-        <h1>Welcome Moderator <?php echo $row['firstname']. ' ' .$row['lastname']?></h1>
-        <a href="../logout/" class="btn btn-danger">Log out</a>
-    </div>
-
-    <div class="container">
-        <h2>Search Form</h2>
-        <form name="searchForm" method="post" action="moderator.php">
-            <div class="mb-3">
-                <label for="id" class="form-label">ID:</label>
-                <input type="text" class="form-control" id="id" name="id">
+        <!--<h1>Welcome <?php //echo $row['firstname']. ' ' .$row['lastname']?> User</h1>-->
+        <div class="container mt-5">
+            <h1 class="text-white">Welcome Moderator: <?php echo $row['firstname'].' '.$row['lastname']?></h1>
+            <h4 class="text-white">Account Num: <?php echo $row2['id']?> </h4>
+            <div class="card mb-3 center">
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Balance</h5>
+                        <p class="card-text fs-1">฿<span id="balance"><?php echo number_format($row2['balance'],2)?><img src="../assets/img/JT.jpg" alt="" class="lol_pic"></span></p>
+                    </div>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary" name="Search">Search</button>
-        </form>
+
+
+            <div class="w-10 mt-5"><a href="../logout/" class="btn btn-danger">Log out</a></div>
+        </div>
     </div>
     
 </body>
 </html>
-
-
