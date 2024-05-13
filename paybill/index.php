@@ -49,6 +49,7 @@
             <option value="water">Water</option>
         </select>
       </div>
+
       <a href="../user/" class="btn btn-danger">Back</a>
       <button type="submit" class="btn btn-primary" name="pay">Submit</button>
     </fieldset>

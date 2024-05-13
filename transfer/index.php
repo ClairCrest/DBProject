@@ -70,6 +70,15 @@
                     </div>
                 </div>
 
+                
+                <div class="mb-3">
+                    <label for="disabledSelect" class="form-label">Transfer Option</label>
+                    <select name="transfer_type" id="transfer_type" class="form-select">
+                            <option value="country">In Country</option>
+                            <option value="oversea">Oversea</option>
+                    </select>
+                </div>
+
                 <div class="row mt-3">
                     <div class="col-md-5">
                         <a class="btn btn-danger btn-primary w-100 mx-1" href="/user/" role="button">Back</a>
