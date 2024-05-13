@@ -5,6 +5,8 @@ require_once '../config/db.php';
 if(isset($_POST['pay'])) 
 {
     $money = $_POST['money'];
+    $billType = $_POST['bill_type']; // Retrieve the selected bill type
+
     if(empty($money))
     {
         $_SESSION['error'] = "กรุณากรอกจำนวนเงิน";
@@ -47,11 +49,12 @@ if(isset($_POST['pay']))
                 $updateBalanceStmt->execute();
 
                 // Store transaction history
-                $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, old_balance, new_balance, difference, ref_id) VALUES (:user_id, :current_balance, :new_balance, :money, 'paybill')");
+                $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, old_balance, new_balance, difference, ref_id) VALUES (:user_id, :current_balance, :new_balance, :money, :bill_type)");
                 $insertHistoryStmt->bindParam(":user_id", $_SESSION['user_login']);
                 $insertHistoryStmt->bindParam(":current_balance", $currentBalance);
                 $insertHistoryStmt->bindParam(":new_balance", $newBalance);
                 $insertHistoryStmt->bindParam(":money", $money);
+                $insertHistoryStmt->bindParam(":bill_type", $billType); // Use selected bill type as ref_id
                 $insertHistoryStmt->execute();
 
                 // Redirect to success page

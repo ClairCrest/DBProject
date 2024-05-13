@@ -44,9 +44,9 @@
       </div>
       <div class="mb-3">
         <label for="disabledSelect" class="form-label">Select Option</label>
-        <select id="disabledSelect" class="form-select">
-          <option>Electricity</option>
-          <option>Water</option>
+        <select name="bill_type" id="disabledSelect" class="form-select">
+            <option value="electricity">Electricity</option>
+            <option value="water">Water</option>
         </select>
       </div>
       <a href="../user/" class="btn btn-danger">Back</a>
