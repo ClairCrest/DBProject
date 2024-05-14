@@ -30,8 +30,10 @@ if(isset($_POST['transfer']))
     // Subtract 10% from the amount for oversea transfer
             $amount = $amount * 0.9; // 10% deduction
             $vatType = "oversea";
+            $ref_id = 6;
         } else {
             $vatType = "incountry";
+            $ref_id = 5;
         }
 
             try {
@@ -73,13 +75,14 @@ if(isset($_POST['transfer']))
             $updateBalanceStmt->bindParam(":user_id", $account_no);
             $updateBalanceStmt->execute();
 
-    // Store transaction history
-            $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, target_id, old_balance, new_balance, difference, ref_id, vat_type) VALUES (:user_id, :target_id, :current_balance, :new_balance, :amount, 'transfer', :vat_type)");
+    // Store transaction historytransfer
+            $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, target_id, old_balance, new_balance, difference, ref_id, vat_type) VALUES (:user_id, :target_id, :current_balance, :new_balance, :amount, :ref_id, :vat_type)");
             $insertHistoryStmt->bindParam(":user_id", $_SESSION['user_login']);
             $insertHistoryStmt->bindParam(":target_id", $account_no);
             $insertHistoryStmt->bindParam(":current_balance", $currentBalance);
             $insertHistoryStmt->bindParam(":new_balance", $newBalance);
             $insertHistoryStmt->bindParam(":amount", $amount);
+            $insertHistoryStmt->bindParam(":ref_id", $ref_id);
             $insertHistoryStmt->bindParam(":vat_type", $vatType);
             $insertHistoryStmt->execute();
 

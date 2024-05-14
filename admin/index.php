@@ -7,6 +7,7 @@
         header("location: ../index.php");
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,8 +49,33 @@
                 </div>
             </div>
 
+            <div class="row mt-3">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                        <h5 class="card-header">Analysis Report</h5>
+                        <div class="card-body">
+                            <p class="card-text">View all analysis</p>
+                            <a href="/admin_analysis/" class="btn btn-warning">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <h5 class="card-header">User Table</h5>
+                        <div class="card-body">
+                            <p class="card-text">View User Table</p>
+                            <a href="/admin_table/" class="btn btn-warning">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="w-10 mt-5"><a href="../logout/" class="btn btn-danger">Log out</a></div>
+        </div>
+    </div>
+            
+
+
+            <div class="w-10 mt-5 mx-5"><a href="../logout/" class="btn btn-danger">Log out</a></div>
         </div>
     </div>
     

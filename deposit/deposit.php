@@ -41,7 +41,7 @@ if(isset($_POST['deposit']))
             $updateBalanceStmt->execute();
 
             // Store transaction history
-            $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, old_balance, new_balance, difference, ref_id) VALUES (:user_id, :current_balance, :new_balance, :money,'deposit')");
+            $insertHistoryStmt = $conn->prepare("INSERT INTO history (id, old_balance, new_balance, difference, ref_id, vat_type) VALUES (:user_id, :current_balance, :new_balance, :money,1,'incountry')");
             $insertHistoryStmt->bindParam(":user_id", $_SESSION['user_login']);
             $insertHistoryStmt->bindParam(":current_balance", $currentBalance);
             $insertHistoryStmt->bindParam(":new_balance", $newBalance);

@@ -6,6 +6,8 @@ CREATE TABLE history (
     new_balance float(20) NOT NULL,
     difference float(20) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ref_id varchar(255) NOT NULL,
-    vat_type varchar(255) NOT NULL
+    ref_id int(11) NOT NULL,
+    vat_type varchar(255) NOT NULL,
+    FOREIGN KEY (vat_type) REFERENCES vat(vat_type),
+    FOREIGN KEY (ref_id) REFERENCES reference(ref_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

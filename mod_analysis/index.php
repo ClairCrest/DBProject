@@ -35,13 +35,15 @@ if (!isset($_SESSION['moderator_login'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql1 = "SELECT a.country, u.urole, COUNT(*) AS total_transactions
-                             FROM history h
-                             INNER JOIN users u ON h.id = u.id
-                             INNER JOIN acc_detail ad ON u.detail_id = ad.detail_id
-                             INNER JOIN address1 a ON ad.address_id = a.address_id
-                             GROUP BY a.country, u.urole
-                             ORDER BY a.country, u.urole ASC";
+                    $sql1 = "SELECT a.country, ur.urole, COUNT(*) AS total_transactions
+                                FROM history h
+                                INNER JOIN users u ON h.id = u.id
+                                INNER JOIN acc_detail ad ON u.detail_id = ad.detail_id
+                                INNER JOIN address1 a ON ad.address_id = a.address_id
+                                INNER JOIN urole ur ON u.role_id = ur.role_id
+                                GROUP BY a.country, ur.urole
+                                ORDER BY a.country, ur.urole ASC;
+                            ";
 
                     $stmt1 = $conn->query($sql1);
                     while ($row = $stmt1->fetch(PDO::FETCH_ASSOC)) {
@@ -58,31 +60,34 @@ if (!isset($_SESSION['moderator_login'])) {
 
         <!-- Report 2: Average Transaction Value by Month and VAT Type -->
         <section class="mt-5">
-            <h2>Average Transaction Value by Month and VAT Type</h2>
+            <h2>Average Transaction Value by Month and Country</h2>
             <table class="table table-bordered table-light text-dark">
                 <thead>
                     <tr>
                         <th>Month</th>
-                        <th>VAT Percent</th>
+                        <th>Country</th>
                         <th>Average Transaction Value</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql2 = "SELECT MONTH(h.created_at) AS month, v.percent AS vat_percent, AVG(h.difference) AS avg_transaction_value
-                             FROM history h
-                             INNER JOIN vat v ON h.ref_id = v.vat_type
-                             GROUP BY MONTH(h.created_at), v.percent
-                             ORDER BY month ASC, vat_percent ASC";
-
+                    $sql2 = "SELECT MONTH(h.created_at) AS month, a.country, AVG(h.difference) AS avg_transaction_value
+                    FROM history h
+                    INNER JOIN users u ON h.id = u.id
+                    INNER JOIN acc_detail ad ON u.detail_id = ad.detail_id
+                    INNER JOIN address1 a ON ad.address_id = a.address_id
+                    GROUP BY MONTH(h.created_at), a.country
+                    ORDER BY month ASC, country ASC";
+        
                     $stmt2 = $conn->query($sql2);
                     while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row['month']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['vat_percent']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['avg_transaction_value']) . "</td>";
+                        echo "<td>" . (isset($row['month']) ? htmlspecialchars($row['month']) : '') . "</td>";
+                        echo "<td>" . htmlspecialchars($row['country']) . "</td>";
+                        echo "<td>" . (isset($row['avg_transaction_value']) ? htmlspecialchars($row['avg_transaction_value']) : '') . "</td>";
                         echo "</tr>";
                     }
+                    
                     ?>
                 </tbody>
             </table>
@@ -102,14 +107,15 @@ if (!isset($_SESSION['moderator_login'])) {
                 <tbody>
                     <?php
                     $sql3 = "SELECT a.country, u.email, COUNT(*) AS total_transactions
-                             FROM history h
-                             INNER JOIN users u ON h.id = u.id
-                             INNER JOIN acc_detail ad ON u.detail_id = ad.detail_id
-                             INNER JOIN address1 a ON ad.address_id = a.address_id
-                             WHERE u.urole <> 'admin'
-                             GROUP BY a.country, u.id
-                             ORDER BY a.country, total_transactions DESC
-                             LIMIT 10";
+                                FROM history h
+                                INNER JOIN users u ON h.id = u.id
+                                INNER JOIN acc_detail ad ON u.detail_id = ad.detail_id
+                                INNER JOIN address1 a ON ad.address_id = a.address_id
+                                INNER JOIN urole ur ON u.role_id = ur.role_id
+                                WHERE ur.urole <> 'admin'
+                                GROUP BY a.country, u.email
+                                ORDER BY a.country, total_transactions DESC
+                                LIMIT 10;";
 
                     $stmt3 = $conn->query($sql3);
                     while ($row = $stmt3->fetch(PDO::FETCH_ASSOC)) {
@@ -197,6 +203,7 @@ if (!isset($_SESSION['moderator_login'])) {
                 </tbody>
             </table>
         </section>
+        <a href="../moderator/" class="btn btn-danger">Back</a>
     </div>
 </body>
 </html>

@@ -37,12 +37,12 @@
                     {
                         if(password_verify($password, $row['password']))
                         {
-                            if($row['urole'] == 'admin')
+                            if($row['role_id'] == 1)
                             {
                                 $_SESSION['admin_login'] = $row['id'];
                                 header("location: ../admin/index.php");
                             }
-                            else if($row['urole'] == 'moderator')
+                            else if($row['role_id'] == 2)
                             {
                                 $_SESSION['moderator_login'] = $row['id'];
                                 header("location: ../moderator/index.php");
