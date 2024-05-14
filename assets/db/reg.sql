@@ -5,8 +5,8 @@ CREATE TABLE users (
     password varchar(255) NOT NULL,
     role_id int(11) NOT NULL,
     detail_id int(11) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    FOREIGN KEY (role_id) REFERENCES urole(role_id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (role_id) REFERENCES urole(role_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
