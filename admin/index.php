@@ -69,15 +69,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        <div class="w-10 mt-5 mx-2"><a href="../logout/" class="btn btn-danger">Log out</a></div>
     </div>
             
-
-
-            <div class="w-10 mt-5 mx-5"><a href="../logout/" class="btn btn-danger">Log out</a></div>
-        </div>
-    </div>
     
 </body>
 </html>

@@ -51,12 +51,12 @@
         <div class="position-absolute top-0 start-50 translate-middle-x">
             <div class="my-5 text-white">
                 <div class="row">
-                        <div class="col-md-6">
-                            <h5 class="card-title">Balance</h5>
-                            <p class="card-text fs-1">฿<span id="balance"><?php echo number_format($row2['balance'],2)?></span></p>
-                        </div>
-                        </div>
-                <h2 class="text-center ">Transfer To</h2>
+                    <div class="col-md-6">
+                        <h5 class="card-title">Balance</h5>
+                        <p class="card-text fs-1">฿<span id="balance"><?php echo number_format($row2['balance'],2)?></span></p>
+                    </div>
+                </div>
+                <h2 class="text-center">Transfer To</h2>
                 <div class="row">
                     <div class="col-md-auto">
                         <input type="text" class="form-control mx-3" id="Account_No" name="account_no" placeholder="Account No">
@@ -70,13 +70,14 @@
                     </div>
                 </div>
 
-                
-                <div class="mb-3">
-                    <label for="disabledSelect" class="form-label">Transfer Option</label>
-                    <select name="transfer_type" id="transfer_type" class="form-select">
-                            <option value="country">In Country</option>
-                            <option value="oversea">Oversea</option>
-                    </select>
+                <div class="row mb-3">
+                    <div class="w-10">
+                        <label for="disabledSelect" class="form-label">Transfer Option</label>
+                        <select name="transfer_type" id="transfer_type" class="form-select">
+                                <option value="country">In Country</option>
+                                <option value="oversea">Oversea</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row mt-3">

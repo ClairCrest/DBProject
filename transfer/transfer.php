@@ -28,7 +28,7 @@ if(isset($_POST['transfer']))
 // Adjust amount based on transfer type
         if ($transferType === "oversea") {
     // Subtract 10% from the amount for oversea transfer
-            $amount = $amount * 0.9; // 10% deduction
+            $amount = $amount * 1.1; // 10% deduction
             $vatType = "oversea";
             $ref_id = 6;
         } else {
