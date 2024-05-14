@@ -66,8 +66,11 @@
           <input type="text" class="form-control" name="province" placeholder="Enter Province">
         </div>
         <div class="col-md-6 mt-3">
-          <label for="country" class="form-label">Country</label>
-          <input type="text" class="form-control"name="country" placeholder="Enter Country">
+          <label for="disabledSelect" class="form-label">Country</label>
+          <select name="country" id="disabledSelect" class="form-select">
+            <option value="Thailand">Thailand</option>
+            <option value="Oversea">Oversea</option>
+          </select>
         </div>
       </div>
       <div class="row">
