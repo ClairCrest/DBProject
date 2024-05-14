@@ -203,6 +203,7 @@ if (!isset($_SESSION['admin_login'])) {
                 </tbody>
             </table>
         </section>
+        <a href="../admin/" class="btn btn-danger">Back</a>
     </div>
 </body>
 </html>
