@@ -67,7 +67,7 @@
         </div>
         <div class="col-md-6 mt-3">
           <label for="country" class="form-label">Country</label>
-          <input type="text" class="form-control"name="country" placeholder="Ente Country">
+          <input type="text" class="form-control"name="country" placeholder="Enter Country">
         </div>
       </div>
       <div class="row">

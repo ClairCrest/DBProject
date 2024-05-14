@@ -69,17 +69,7 @@
                         <input type="text" class="form-control mx-3" id="Amount" name="amount" placeholder="Amount">
                     </div>
                 </div>
-
-                <div class="row mb-3">
-                    <div class="w-10">
-                        <label for="disabledSelect" class="form-label">Transfer Option</label>
-                        <select name="transfer_type" id="transfer_type" class="form-select">
-                                <option value="country">In Country</option>
-                                <option value="oversea">Oversea</option>
-                        </select>
-                    </div>
-                </div>
-
+                
                 <div class="row mt-3">
                     <div class="col-md-5">
                         <a class="btn btn-danger btn-primary w-100 mx-1" href="/user/" role="button">Back</a>

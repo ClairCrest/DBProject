@@ -23,12 +23,12 @@ if(isset($_POST['transfer']))
     }
     else
     {
-        $transferType = $_POST['transfer_type'];
+        $transferType = $_POST['transferType'];
 
 // Adjust amount based on transfer type
         if ($transferType === "oversea") {
     // Subtract 10% from the amount for oversea transfer
-            $amount = $amount * 1.1; // 10% deduction
+            $new_amount = $amount * 1.1; // 10% deduction
             $vatType = "oversea";
             $ref_id = 6;
         } else {
@@ -45,14 +45,14 @@ if(isset($_POST['transfer']))
             $currentBalance = $row['balance'];
 
     // Check if the user has sufficient balance
-            if ($currentBalance < $amount) {
+            if ($currentBalance < $new_amount) {
                 $_SESSION['error'] = 'ไม่สามารถทำรายการได้ เงินในบัญชีไม่เพียงพอ';
                 header("location: ../transfer/index.php");
                 exit(); // Stop script execution
             }
 
     // Calculate new balance
-            $newBalance = $currentBalance - $amount;
+            $newBalance = $currentBalance - $new_amount;
 
     // Update balance in the user's account
             $updateBalanceStmt = $conn->prepare("UPDATE users SET balance = :new_balance WHERE id = :user_id");
@@ -81,7 +81,7 @@ if(isset($_POST['transfer']))
             $insertHistoryStmt->bindParam(":target_id", $account_no);
             $insertHistoryStmt->bindParam(":current_balance", $currentBalance);
             $insertHistoryStmt->bindParam(":new_balance", $newBalance);
-            $insertHistoryStmt->bindParam(":amount", $amount);
+            $insertHistoryStmt->bindParam(":amount", $new_amount);
             $insertHistoryStmt->bindParam(":ref_id", $ref_id);
             $insertHistoryStmt->bindParam(":vat_type", $vatType);
             $insertHistoryStmt->execute();
